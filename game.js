@@ -54,10 +54,41 @@ function Game(type, team1, team2) {
     this.playerList.splice(this.playerList.indexOf(player), 1)
     return this.playerList;
   }
+
+  this.generateScore = function() {
+    const score1 = Math.floor(Math.random() * 10)
+    const score2 = Math.floor(Math.random() * 10)
+    this.score = [score1, score2]
+  }
+
+  this.determineWinners = function() {
+    if (this.score[0] === this.score[1]){
+      return `It's a tie game with a score of ${this.score[0]} - ${this.score[1]}`
+    } else if (this.score[0] > this.score[1]) {
+      return `${this.score[0]} - ${this.score[1]}, ${this.team1[0].firstName} wins!`
+    } else {
+      return `${this.score[0]} - ${this.score[1]}, ${this.team2[0].firstName} wins!`
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const p1 = new Player('Torri', 'Porter', 'male', 26, 'vancouver', 'basketball');
 const p2 = new Player('Nikki', 'Layson', 'male', 29, 'vancouver', 'running');
 
 const g1 = new Game('basketball', [p1], [p2])
-console.log(g1.getTeams())
+g1.generateScore()
+console.log(g1.determineWinners())

@@ -8,6 +8,7 @@ function Player(firstName, lastName, gender, age, city, primarySport) {
   this.wins = 0;
   this.losses = 0;
   this.ties = 0;
+  this.wlRatio = 0;
 
   this.getFirstName = function() { return this.firstName };
   this.setFirstName = function(value) { this.firstName = value };
@@ -27,6 +28,8 @@ function Player(firstName, lastName, gender, age, city, primarySport) {
   this.getAge = function() { return this.age };
   this.setAge = function(value) { this.age = value };
 
+  this.getwlRatio = function() { return this.wlRatio };
+
   this.fullName = function() {
     return `${this.firstName} ${this.lastName}`
   }
@@ -43,9 +46,13 @@ function Player(firstName, lastName, gender, age, city, primarySport) {
     this.ties += 1
   }
 
-  this.WinLossRation = function(){
+  this.showRecord = function(){
+    return `${this.wins} - ${this.losses} - ${this.ties}`
+  }
+
+  this.updateRatio = function(){
     const ratio = this.wins / this.losses
-    return `${this.firstName}'s win/loss ratio is ${ratio}`
+    this.wlRatio = ratio
   }
 }
 
@@ -54,6 +61,7 @@ function Game(type, team1, team2) {
   this.team1 = team1;
   this.team2 = team2;
   this.score = [0,0]
+  this.winner = ''
 
   this.getGameType = function() { return this.type };
   this.setGameType = function(value) { this.type = value };
@@ -87,18 +95,25 @@ function Game(type, team1, team2) {
         this.team1[i].addTie()
         this.team2[i].addTie()
       }
+      this.winner = 'Tie'
       return `It's a tie game with a score of ${this.score[0]} - ${this.score[1]}`
     } else if (this.score[0] > this.score[1]) {
       for(i=0;i<this.team1.length;i++){
         this.team1[i].addWin()
+        this.team1[i].updateRatio()
         this.team2[i].addLoss()
+        this.team2[i].updateRatio()
       }
+      this.winner = team1
       return `${this.score[0]} - ${this.score[1]}, ${this.team1[0].firstName} wins!`
     } else {
       for(i=0;i<this.team1.length;i++){
         this.team1[i].addLoss()
+        this.team1[i].updateRatio()
         this.team2[i].addWin()
+        this.team2[i].updateRatio()
       }
+      this.winner = team2
       return `${this.score[0]} - ${this.score[1]}, ${this.team2[0].firstName} wins!`
     }
   }
@@ -111,17 +126,8 @@ function Game(type, team1, team2) {
 
 
 
-
-
-
-
-
-
-
 const p1 = new Player('Torri', 'Porter', 'male', 26, 'vancouver', 'basketball');
 const p2 = new Player('Nikki', 'Layson', 'male', 29, 'vancouver', 'running');
-
-const g1 = new Game('basketball', [p1], [p2])
-g1.generateScore()
-console.log(g1.determineWinners())
-console.log(p1.wins, p2.wins)
+const p3 = new Player('Alison', 'Parker', 'female', 24, 'singapore', 'baseball');
+const p4 = new Player('Indigo', 'Ward', 'female', 22, 'LA', 'rollerblading');
+const p5 = new Player('Manny', 'Sign', 'male', 25, 'India', 'cricket');

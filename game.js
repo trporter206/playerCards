@@ -1,4 +1,4 @@
-function Player(firstName, lastName, gender, age, city, primarySport) {
+function Player(firstName, lastName, gender, age, city, primarySport, maxLevel) {
   //about the player
   this.firstName = firstName;
   this.lastName = lastName;
@@ -6,6 +6,7 @@ function Player(firstName, lastName, gender, age, city, primarySport) {
   this.age = age;
   this.city = city;
   this.primarySport = primarySport;
+  this.maxLevel = maxLevel;
   //game stats
   this.wins = 0;
   this.losses = 0;

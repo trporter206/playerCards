@@ -1,0 +1,40 @@
+nav {
+  background-color: green;
+}
+
+body {
+  float: left;
+  width: 100%;
+}
+
+body section {
+  width: 50%;
+  float: left;
+}
+
+nav li{
+  display: inline;
+}
+
+.page-options {
+  text-align: right;
+}
+
+footer {
+  background-color: lightblue;
+}
+
+footer li {
+  display: inline;
+}
+
+#create-player {
+  width: 50%;
+  background-color: pink;
+}
+
+#player-list {
+  width: 50%;
+  float: right;
+  background-color: gray;
+}

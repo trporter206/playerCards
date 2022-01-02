@@ -14,8 +14,47 @@
       </ul>
     </nav>
     <section id="create-player">
-      <h3>Create Player</h3>
-      <p>Create a player to add to the league</p>
+      <form method="post" action="main.html">
+        <h3>Create Player</h3>
+        <p>Create a player to add to the league</p>
+        <label for="first-name">First Name</label>
+        <input type="text" name="first-name" id="first-name">
+        <br/>
+        <label for="last-name">Last Name</label>
+        <input type="text" name="last-name" id="last-name">
+        <br/>
+        <p>Gender</p>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="other" value="other">
+        <label for="other">Other</label>
+        <br/>
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" steps="1">
+        <br/>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city">
+        <br/>
+        <label for="sport">Sport</label>
+        <select name="sport" id="sport">
+          <option value="soccer">Soccer</option>
+          <option value="basketball">Basketball</option>
+          <option value="running">Running</option>
+        </select>
+        <br/>
+        <label for="max-level">Max Level</label>
+        <select name="max-level" id="max-level">
+          <option value="rec">Recreational</option>
+          <option value="select">Select</option>
+          <option value="varsity">Varsity</option>
+          <option value="college">College</option>
+          <option value="professional">Professional</option>
+        </select>
+        <br/>
+        <input type="submit" value="Submit">
+      </form>
     </section>
     <section id="player-list">
       <h3>Player List</h3>

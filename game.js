@@ -170,26 +170,60 @@ function Game(type, team1, team2) {
 }
 
 
-const p1 = new Player('Torri', 'Porter', 'male', 26, 'vancouver', 'basketball');
-const p2 = new Player('Nikki', 'Layson', 'male', 29, 'vancouver', 'running');
-const p3 = new Player('Alison', 'Parker', 'female', 24, 'singapore', 'baseball');
-const p4 = new Player('Indigo', 'Ward', 'female', 22, 'LA', 'rollerblading');
-const p5 = new Player('Manny', 'Sign', 'male', 25, 'India', 'cricket');
-const p6 = new Player('Rachel', 'Lui', 'female', 26, 'Phillipines', 'soccer');
+var players = []
 
-const players = [p1,p2,p3,p4,p5,p6]
-
-const team1 = new Team('Hawks', [p1,p2,p3], 'Seattle')
-const team2 = new Team('Bears', [p4,p5,p6], 'Chicago')
-
-let count = 20
-while(count>0){
-  for(i=0;i<3;i++){
-    const g1 = new Game('basketball', team1, team2)
-    g1.generateScore()
-    console.log(g1.determineWinners())
-    count-=1
-  }
+function getFormInfo(){
+  var form = document.getElementById('player-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault()
+    players.push(this.elements)
+    console.log(players)
+  })
 }
 
-console.log(p1.wlRatio)
+getFormInfo()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const p1 = new Player('Torri', 'Porter', 'male', 26, 'vancouver', 'basketball');
+// const p2 = new Player('Nikki', 'Layson', 'male', 29, 'vancouver', 'running');
+// const p3 = new Player('Alison', 'Parker', 'female', 24, 'singapore', 'baseball');
+// const p4 = new Player('Indigo', 'Ward', 'female', 22, 'LA', 'rollerblading');
+// const p5 = new Player('Manny', 'Sign', 'male', 25, 'India', 'cricket');
+// const p6 = new Player('Rachel', 'Lui', 'female', 26, 'Phillipines', 'soccer');
+//
+// const players = [p1,p2,p3,p4,p5,p6]
+//
+// const team1 = new Team('Hawks', [p1,p2,p3], 'Seattle')
+// const team2 = new Team('Bears', [p4,p5,p6], 'Chicago')
+//
+// let count = 20
+// while(count>0){
+//   for(i=0;i<3;i++){
+//     const g1 = new Game('basketball', team1, team2)
+//     g1.generateScore()
+//     console.log(g1.determineWinners())
+//     count-=1
+//   }
+// }
+//
+// console.log(p1.wlRatio)

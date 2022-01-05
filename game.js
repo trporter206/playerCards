@@ -1,70 +1,72 @@
-function Player(firstName, lastName, gender, age, city, primarySport, maxLevel) {
-  //about the player
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.gender = gender;
-  this.age = age;
-  this.city = city;
-  this.primarySport = primarySport;
-  this.maxLevel = maxLevel;
-  //game stats
-  this.wins = 0;
-  this.losses = 0;
-  this.ties = 0;
-  this.wlRatio = 0;
-  //list of team objects player is a member of
-  this.teams = [];
-  //ranking stats
-  this.reviews = [];
-  this.rating = 0;
-  //get and set functions
-  this.getFirstName = function() { return this.firstName };
-  this.setFirstName = function(value) { this.firstName = value };
-  this.getLastName = function() { return this.lastName };
-  this.setLastName = function(value) { this.lastName = value };
-  this.getGender = function() { return this.gender };
-  this.setGender = function(value) { this.gender = value };
-  this.getCity = function() { return this.city };
-  this.setCity = function(value) { this.city = value };
-  this.getPrimarySport = function() { return this.primarySport };
-  this.setPrimarySport = function(value) { this.primarySport = value };
-  this.getAge = function() { return this.age };
-  this.setAge = function(value) { this.age = value };
-  this.getTeam = function() { return this.team };
-  this.setTeams = function(value) { this.team = value };
-  this.getwlRatio = function() { return this.wlRatio };
-  //return full name
-  this.fullName = function() {
-    return `${this.firstName} ${this.lastName}`
-  }
-  //add win after game victory
-  this.addWin = function(){
-    this.wins += 1
-  }
-  //add loss after losing game
-  this.addLoss = function(){
-    this.losses += 1
-  }
-  //add tie after a tie game
-  this.addTie = function(){
-    this.ties += 1
-  }
-  //return wins-losses-ties
-  this.showRecord = function(){
-    return `${this.wins} - ${this.losses} - ${this.ties}`
-  }
-  //update w/l ratio after completing a game
-  this.updateRatio = function(){
-    const ratio = this.wins / this.losses
-    this.wlRatio = ratio
-  }
-  //leave review for other player after game
-  this.leaveReview = function(review, player){
-    player.reviews.push([review, thisfulName()]);
-  }
-  //rate other player after game
-  this.leaveRating = function(rating, player){
-    player.rating += rating
+const playerFactory = (firstName, lastName, gender, age, city, primarySport, maxLevel) => {
+  return {
+    //about the player
+    firstName: firstName,
+    lastName: lastName,
+    gender: gender,
+    age: age,
+    city: city,
+    primarySport: primarySport,
+    maxLevel: maxLevel,
+    //game stats
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    wlRatio: 0,
+    //list of team objects player is a member of
+    teams: [],
+    //ranking stats
+    reviews: [],
+    rating: 0,
+    //get and set functions
+    getFirstName() { return firstName },
+    setFirstName(value) { firstName = value },
+    getLastName() { return lastName },
+    setLastName(value) { lastName = value },
+    getGender() { return gender },
+    setGender(value) { gender = value },
+    getCity() { return city },
+    setCity(value) { city = value },
+    getPrimarySport() { return primarySport },
+    setPrimarySport(value) { primarySport = value },
+    getAge() { return age },
+    setAge(value) { age = value },
+    getTeam() { return team },
+    setTeams(value) { team = value },
+    getwlRatio() { return wlRatio },
+    //return full name
+    fullName() {
+      return `${firstName} ${lastName}`
+    },
+    //add win after game victory
+    addWin(){
+      wins += 1
+    },
+    //add loss after losing game
+    addLoss(){
+      losses += 1
+    },
+    //add tie after a tie game
+    addTie(){
+      ties += 1
+    },
+    //return wins-losses-ties
+    showRecord(){
+      return `${wins} - ${losses} - ${ties}`
+    },
+    //update w/l ratio after completing a game
+    updateRatio(){
+      const ratio = wins / losses
+      wlRatio = ratio
+    },
+    //leave review for other player after game
+    leaveReview(review, player){
+      player.reviews.push([review, thisfulName()]);
+    },
+    //rate other player after game
+    leaveRating(rating, player){
+      player.rating += rating
+    }
   }
 }
 
@@ -169,15 +171,22 @@ function Game(type, team1, team2) {
   }
 }
 
-
-var players = []
+playerList = []
 
 function getFormInfo(){
   var form = document.getElementById('player-form');
   form.addEventListener('submit', function(e) {
     e.preventDefault()
-    players.push(this.elements)
-    console.log(players)
+    var firstName = this.elements.firstname.value
+    var lastName = this.elements.lastname.value
+    var gender = this.elements.gender.value
+    var age = this.elements.age.value
+    var city = this.elements.city.value
+    var primarySport = this.elements.sport.value
+    var maxLevel = this.elements.maxlevel.value
+    let newPlayer = playerFactory(firstName, lastName, gender, age, city, primarySport, maxLevel)
+    playerList.push(newPlayer)
+    console.log(playerList)
   })
 }
 

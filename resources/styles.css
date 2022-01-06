@@ -16,8 +16,7 @@ nav li{
   text-align: right;
 }
 
-#create-player {
-  background-color: pink;
+#create {
   font-size: 1.25rem;
 }
 
@@ -26,5 +25,13 @@ nav li{
   float: left;
   text-align: center;
   background-color: teal;
+  margin: 2%;
+}
+
+.create-court-form {
+  width: 46%;
+  float: left;
+  text-align: center;
+  background-color: pink;
   margin: 2%;
 }

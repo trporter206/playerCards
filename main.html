@@ -8,54 +8,59 @@
       <h1><a href="main.html">Street League</a></h1>
       <ul class="page-options">
         <li><a href="profile.html">Profile</a></li>
-        <li><a href="">Players</a></li>
+        <li><a href="players.html">Players</a></li>
+        <li><a href="">Games</a></li>
         <li><a href="">Map</a></li>
         <li><a href="">About</a></li>
       </ul>
     </nav>
     <section id="create-player">
-      <form method="post" action="main.html" id="player-form">
-        <h3>Create Player</h3>
-        <p>Create a player to add to the league</p>
-        <label for="first-name">First Name</label>
-        <input type="text" name="firstname" id="firstname" required>
-        <br/>
-        <label for="lastname">Last Name</label>
-        <input type="text" name="lastname" id="lastname" required>
-        <br/>
-        <p>Gender</p>
-        <input type="radio" name="gender" id="male" value="male">
-        <label for="male">Male</label>
-        <input type="radio" name="gender" id="female" value="female">
-        <label for="female">Female</label>
-        <input type="radio" name="gender" id="other" value="other">
-        <label for="other">Other</label>
-        <br/>
-        <label for="age">Age</label>
-        <input type="number" name="age" id="age" steps="1"  min="0" max="100" required>
-        <br/>
-        <label for="city">City</label>
-        <input type="text" name="city" id="city">
-        <br/>
-        <label for="sport">Sport</label>
-        <select name="sport" id="sport" required>
-          <option value="soccer">Soccer</option>
-          <option value="basketball">Basketball</option>
-          <option value="running">Running</option>
-        </select>
-        <br/>
-        <label for="maxlevel">Max Level</label>
-        <select name="maxlevel" id="maxlevel">
-          <option value="rec">Recreational</option>
-          <option value="select">Select</option>
-          <option value="varsity">Varsity</option>
-          <option value="college">College</option>
-          <option value="professional">Professional</option>
-        </select>
-        <br/>
-        <input type="submit" value="Submit">
-      </form>
-      <p id='welcome-message'></p>
+      <div class="create-player-form">
+        <form method="post" action="main.html" id="player-form">
+          <h3>Create Player</h3>
+          <p>Create a player to add to the league</p>
+          <label for="first-name">First Name</label>
+          <input type="text" name="firstname" id="firstname" required>
+          <br/>
+          <label for="lastname">Last Name</label>
+          <input type="text" name="lastname" id="lastname" required>
+          <br/>
+          <p>Gender</p>
+          <input type="radio" name="gender" id="male" value="male">
+          <label for="male">Male</label>
+          <input type="radio" name="gender" id="female" value="female">
+          <label for="female">Female</label>
+          <input type="radio" name="gender" id="other" value="other">
+          <label for="other">Other</label>
+          <br/>
+          <label for="age">Age</label>
+          <input type="number" name="age" id="age" steps="1"  min="0" max="100" required>
+          <br/>
+          <label for="city">City</label>
+          <input type="text" name="city" id="city">
+          <br/>
+          <label for="sport">Sport</label>
+          <select name="sport" id="sport" required>
+            <option value="soccer">Soccer</option>
+            <option value="basketball">Basketball</option>
+            <option value="running">Running</option>
+          </select>
+          <br/>
+          <label for="maxlevel">Max Level</label>
+          <select name="maxlevel" id="maxlevel">
+            <option value="rec">Recreational</option>
+            <option value="select">Select</option>
+            <option value="varsity">Varsity</option>
+            <option value="college">College</option>
+            <option value="professional">Professional</option>
+          </select>
+          <br/>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div class="create-player-form" id="form-field-info">
+        <h3>display field info on hover</h3>
+      </div>
     </section>
     <section id="player-list">
       <h3>Player List</h3>
@@ -64,8 +69,9 @@
   </body>
   <footer>
     <ul class="page-options">
-      <li><a href="">Profile</a></li>
-      <li><a href="">Players</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="">Games</a></li>
       <li><a href="">Map</a></li>
       <li><a href="">About</a></li>
     </ul>

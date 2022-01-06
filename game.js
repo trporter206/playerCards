@@ -70,110 +70,113 @@ const playerFactory = (firstName, lastName, gender, age, city, primarySport, max
   }
 }
 
-function Team(name, players, city) {
-  //about the team
-  this.name = name;
-  this.players = players;
-  this.city = city;
-  this.wins = 0;
-  this.losses = 0;
-  this.ties = 0;
-  this.wlRatio = 0;
-  // get and set functions
-  this.getPlayers = function() { return this.players }
-  this.getCity = function() { return this.city }
-  this.setCity = function(newCity) { this.city = newCity }
-  // return team record in wins-losses-ties format
-  this.getRecord = function() {
-    return `${this.wins} - ${this.losses} - ${this.ties}`
-  }
-  //  update win/loss ratio after game
-  this.updateRatio = function() {
-    const ratio = this.wins / this.losses
-    this.wlRatio = ratio
-  }
-  // add a player (object) to the team
-  this.addPlayer = function(player) {
-    this.players.push(player)
-  }
-  // remove a player (object) from the team
-  this.removePlayer = function(player) {
-    this.players.splice(this.players.indexOf(player), 1)
-  }
-  // add win after game
-  this.addWin = function(){
-    this.wins += 1
-  }
-  // add loss after game
-  this.addLoss = function(){
-    this.losses += 1
-  }
-  // add tie after game
-  this.addTie = function(){
-    this.ties += 1
-  }
-
-}
-
-function Game(type, team1, team2) {
-  //about the game
-  this.type = type;
-  this.team1 = team1;
-  this.team2 = team2;
-  this.score = [0,0]
-  this.winner = ''
-  // get and set functions
-  this.getGameType = function() { return this.type };
-  this.setGameType = function(value) { this.type = value };
-  this.getTeams = function() { return [this.team1, this.team2] };
-  this.getScore = function() { return this.score }
-  this.setTeams = function(value1, value2) {
-                    this.team1 = value1;
-                    this.team2 = value2;
-  }
-  // generate a random score for the game, update eventually
-  this.generateScore = function() {
-    const score1 = Math.floor(Math.random() * 10)
-    const score2 = Math.floor(Math.random() * 10)
-    this.score = [score1, score2]
-  }
-  //update player/team records
-  this.updateStats = function(winningTeam, losingTeam){
-    winningTeam.addWin()
-    losingTeam.addLoss()
-    for(i=0;i<winningTeam.players.length;i++){
-      winningTeam.players[i].addWin()
-      winningTeam.players[i].updateRatio()
-      losingTeam.players[i].addLoss()
-      losingTeam.players[i].updateRatio()
+const teamFactory = (name, players, city) => {
+  return {
+    //about the team
+    name: name,
+    players: players,
+    city: city,
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    wlRatio: 0,
+    // get and set functions
+    getPlayers() { return players },
+    getCity() { return city },
+    setCity(newCity) { city = newCity },
+    // return team record in wins-losses-ties format
+    getRecord() {
+      return `${wins} - ${losses} - ${ties}`
+    },
+    //  update win/loss ratio after game
+    updateRatio() {
+      const ratio = wins / losses
+      wlRatio = ratio
+    },
+    // add a player (object) to the team
+    addPlayer(player) {
+      players.push(player)
+    },
+    // remove a player (object) from the team
+    removePlayer(player) {
+      players.splice(players.indexOf(player), 1)
+    },
+    // add win after game
+    addWin(){
+      wins += 1
+    },
+    // add loss after game
+    addLoss(){
+      losses += 1
+    },
+    // add tie after game
+    addTie(){
+      ties += 1
     }
   }
-  //determine winner of game based on score
-  this.determineWinners = function() {
-    if (this.score[0] === this.score[1]){
-      this.team1.ties+=1
-      this.team2.ties+=1
-      for(i=0;i<this.team1.players.length;i++){
-        this.team1.players[i].addTie()
-        this.team2.players[i].addTie()
+}
+
+const gameFactory = (type, team1, team2) => {
+  return {
+    //about the game
+    type = type,
+    team1 = team1,
+    team2 = team2,
+    score = [0,0],
+    winner = '',
+    // get and set functions
+    getGameType = function() { return type },
+    setGameType = function(value) { type = value },
+    getTeams = function() { return [team1, team2] },
+    getScore = function() { return score }
+    setTeams = function(value1, value2) {
+                      team1 = value1;
+                      team2 = value2;
+    },
+    // generate a random score for the game, update eventually
+    generateScore = function() {
+      const score1 = Math.floor(Math.random() * 10)
+      const score2 = Math.floor(Math.random() * 10)
+      score = [score1, score2]
+    },
+    //update player/team records
+    updateStats = function(winningTeam, losingTeam){
+      winningTeam.addWin()
+      losingTeam.addLoss()
+      for(i=0;i<winningTeam.players.length;i++){
+        winningTeam.players[i].addWin()
+        winningTeam.players[i].updateRatio()
+        losingTeam.players[i].addLoss()
+        losingTeam.players[i].updateRatio()
       }
-      this.winner = 'Tie'
-      return `It's a tie game with a score of ${this.score[0]} - ${this.score[1]}`
-    } else if (this.score[0] > this.score[1]) {
-      this.updateStats(this.team1, this.team2)
-      this.winner = team1
-      return `${this.score[0]} - ${this.score[1]}, ${this.team1.name} wins!`
-    } else {
-      this.updateStats(this.team2, this.team1)
-      this.winner = team2
-      return `${this.score[0]} - ${this.score[1]}, ${this.team2.name} wins!`
+    },
+    //determine winner of game based on score
+    determineWinners = function() {
+      if (score[0] === score[1]){
+        team1.ties+=1
+        team2.ties+=1
+        for(i=0;i<team1.players.length;i++){
+          team1.players[i].addTie()
+          team2.players[i].addTie()
+        }
+        winner = 'Tie'
+        return `It's a tie game with a score of ${score[0]} - ${score[1]}`
+      } else if (score[0] > score[1]) {
+        updateStats(team1, team2)
+        winner = team1
+        return `${score[0]} - ${score[1]}, ${team1.name} wins!`
+      } else {
+        updateStats(team2, team1)
+        winner = team2
+        return `${score[0]} - ${score[1]}, ${team2.name} wins!`
+      }
     }
   }
 }
 
 playerList = []
 
-function getFormInfo(){
+function getPlayerFormInfo(){
   var form = document.getElementById('player-form');
   form.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -186,11 +189,10 @@ function getFormInfo(){
     var maxLevel = this.elements.maxlevel.value
     let newPlayer = playerFactory(firstName, lastName, gender, age, city, primarySport, maxLevel)
     playerList.push(newPlayer)
-    console.log(playerList)
   })
 }
 
-getFormInfo()
+getPlayerFormInfo()
 
 
 

@@ -31,7 +31,17 @@ footer li {
 #create-player {
   width: 50%;
   background-color: pink;
+  font-size: 1.25rem;
 }
+
+.create-player-form {
+  width: 46%;
+  float: left;
+  text-align: center;
+  background-color: teal;
+  margin: 2%;
+}
+
 
 #player-list {
   width: 50%;

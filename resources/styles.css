@@ -4,13 +4,8 @@ nav {
 }
 
 body {
-  float: left;
   width: 98%;
-}
-
-body section {
-  width: 50%;
-  float: left;
+  min-height:100%;
 }
 
 nav li{
@@ -21,17 +16,7 @@ nav li{
   text-align: right;
 }
 
-footer {
-  background-color: lightblue;
-  padding: .25rem;
-}
-
-footer li {
-  display: inline;
-}
-
 #create-player {
-  width: 50%;
   background-color: pink;
   font-size: 1.25rem;
 }
@@ -42,11 +27,4 @@ footer li {
   text-align: center;
   background-color: teal;
   margin: 2%;
-}
-
-
-#player-list {
-  width: 50%;
-  float: right;
-  background-color: gray;
 }

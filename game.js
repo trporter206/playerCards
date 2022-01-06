@@ -27,6 +27,31 @@ const playerFactory = (firstName, lastName, gender, age, favoriteSport, maxLevel
     //return full name
     fullName() {
       return `${firstName} ${lastName}`
+    },
+
+    addCourt(name, address, type, hours) {
+      let newCourt = courtFactory(name, address, type, hours)
+      courtList.push(newCourt)
+    },
+
+    removeCourt(courtName) {
+      for (court in courtList) {
+        if (court.name = courtName) {
+          courtList.splice(courtList.indexOf(court), 1)
+          return;
+        }
+      }
+      return `Could not find ${courtName}`
+    },
+
+    addFriend(playerFirstName) {
+      for (i=0; i<playerList.length; i++) {
+        if (playerList[i].firstName === playerFirstName) {
+          this.friends.push(playerList[i])
+          return `${playerList[i].firstName} has been added to your friends`;
+        }
+      }
+      return `Could not find ${playerFirstName}`
     }
   }
 }
@@ -53,6 +78,7 @@ const courtFactory = (name, address, activePlayers, type, hours) => {
 }
 
 playerList = []
+courtList = []
 
 function getPlayerFormInfo(){
   var form = document.getElementById('player-form');

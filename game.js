@@ -59,7 +59,7 @@ const playerFactory = (firstName, lastName, gender, age, favoriteSport, maxLevel
   }
 }
 
-const courtFactory = (name, address, activePlayers, type, hours) => {
+const courtFactory = (name, address, type, hours) => {
   return {
     name: name,
     address: address,
@@ -114,3 +114,19 @@ function getCourtFormInfo(){
 }
 
 getCourtFormInfo()
+
+function listCourts() {
+  var list = document.getElementById('play-area-list');
+  const courts = Object.keys(courtList)
+  for (var i = 0; i < courts.length; i++) {
+    const currentCourt = courtList[courts[i]]
+    var newListItem = document.createElement('li')
+    var newText = document.createTextNode(`${currentCourt.name}`)
+    newListItem.appendChild(newText)
+    var position = list[i]
+    position.appendChild(newListItem)
+  }
+}
+
+listCourts()
+// TODO: script reloads when opening courts page, so courts list is empty, fix this

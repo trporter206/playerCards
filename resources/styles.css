@@ -16,22 +16,22 @@ nav li{
   text-align: right;
 }
 
-#create {
+.main {
   font-size: 1.25rem;
 }
 
-.create-player-form {
+.form {
   width: 46%;
-  float: left;
   text-align: center;
-  background-color: teal;
   margin: 2%;
+  background-color: teal;
+  float: left;
 }
 
-.create-court-form {
-  width: 46%;
-  float: left;
+.content {
+  background-color: gray;
   text-align: center;
-  background-color: pink;
   margin: 2%;
+  width: 46%;
+  float: right;
 }

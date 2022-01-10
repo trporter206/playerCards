@@ -13,20 +13,37 @@
       </ul>
     </nav>
     <section class="main">
-      <div class="search-area">
-        <h2>Search for Players</h2>
-        <form method="get" action="players.html" id="search-form">
-          <!-- TODO after more CA implement a basic search with dynamic results -->
+      <div class="form" id="court-creator">
+        <form method="post" action="courts.html" id="court-form">
+          <h3>Create Court</h3>
+          <p>Create a court to add to the database</p>
+          <label for="court-name">Court Name</label>
+          <input type="text" name="courtname" id="courtname" required>
+          <br>
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" required>
+          <br>
+          <p>Type</p>
+          <input type="radio" name="type" id="basketball" value="basketball">
+          <label for="basketball">Basketball</label>
+          <input type="radio" name="type" id="soccer" value="soccer">
+          <label for="soccer">Soccer</label>
+          <input type="radio" name="type" id="other" value="other">
+          <label for="other">Other</label>
+          <br>
+          <label for="age">Hours</label>
+          <input type="text" name="hours" id="hours" required>
+          <br>
+          <input type="submit" value="Submit">
         </form>
+      </div>
+      <div class="content" id="court-content">
+        <h2>List of play areas</h2>
+        <ul id="play-area-list">
+
+        </ul>
       </div>
     </section>
   </body>
-  <footer>
-    <ul class="page-options">
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="courts.html">Courts</a></li>
-      <li><a href="">About</a></li>
-    </ul>
-  </footer>
   <script src="game.js"></script>
 </html>
